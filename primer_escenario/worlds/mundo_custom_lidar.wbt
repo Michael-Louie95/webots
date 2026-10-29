@@ -1,0 +1,382 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/SandyGround.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/Road.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Pavement.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/Windmill.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/SmallManor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/manhole/protos/SquareManhole.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/CardboardBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/TeslaModel3Simple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Pine.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Forest.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/humans/pedestrian/protos/Pedestrian.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/rocks/protos/Rock.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/gas_canister/protos/GasCanister.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/pallet/protos/WoodenPallet.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/traffic/protos/StreetLight.proto"
+
+WorldInfo {
+  info [
+    "Mundo para dataset de deteccion de obstaculos con dron."
+    "Universidad Autonoma de Queretaro - Maestria en IA"
+    "Alumno: Ing. Michael Louie Guerra Huante"
+  ]
+  title "Dataset Dron - Deteccion de Obstaculos"
+  basicTimeStep 8
+  defaultDamping Damping {
+    linear 0.5
+    angular 0.5
+  }
+}
+Viewpoint {
+  orientation 0.08446614863215778 0.9401157075267061 -0.33022405453996084 0.5312609010645535
+  position -35.65745965131885 2.9372910071229854 24.587080039518522
+  near 0.2
+  follow "Mavic 2 PRO"
+  followSmoothness 0.2
+}
+TexturedBackground {
+  luminosity 2
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 400 400
+  tileSize 6 6
+  appearance PBRAppearance {
+    baseColor 0.25 0.25 0.25
+    roughness 0.7
+  }
+}
+Road {
+  translation -43.8 9.2 0.01
+  rotation 0 0 1 -0.3926996938995747
+  width 3
+  numberOfLanes 1
+  rightBorder FALSE
+  leftBorder FALSE
+  wayPoints [
+    0 0 0
+    100 0 0
+    200 200 0
+  ]
+  splineSubdivision 8
+  appearance Pavement {
+    type "black stone"
+  }
+}
+Windmill {
+  translation -43.8656 -19.8433 0
+  rotation -7.19228e-09 2.6842e-08 1 0.523601
+}
+Windmill {
+  translation -44.258 -27.3356 0
+  rotation -7.19228e-09 2.6842e-08 1 0.523601
+  name "windmill(1)"
+}
+Windmill {
+  translation -46.2448 30.573 0
+  rotation -7.19228e-09 2.6842e-08 1 0.523601
+  name "windmill(2)"
+}
+Windmill {
+  translation -38.75 23.4 0
+  name "windmill(3)"
+}
+SmallManor {
+  translation -50.35 11.25 0
+  rotation 0 0 -1 0.392394
+}
+SquareManhole {
+  translation 0 0 -0.03
+}
+Pedestrian {
+  translation 2.46 3.96 1.27
+  rotation 0 0 1 3.14159
+  name "persona_1"
+  controller ""
+}
+Pedestrian {
+  translation 10 -3 1.27
+  rotation 0 0 1 0.5
+  name "persona_2"
+  controller ""
+}
+Pedestrian {
+  translation 2.56 -2.27 1.37
+  rotation 0 0 1 3.14159
+  name "persona_1(1)"
+  controller ""
+}
+Pedestrian {
+  translation 15 -0.42 1.27
+  rotation 0 0 1 3.1416
+  name "persona_3"
+  controller ""
+}
+Pedestrian {
+  translation 19.3819 0.833485 0.97
+  rotation 5.61734e-08 6.97357e-08 -1 -0.21459530717958586
+  name "persona_4"
+  controller ""
+}
+CardboardBox {
+  translation 5 2 0.3
+  rotation 0 0 1 0.5
+  name "caja_carton_1"
+}
+CardboardBox {
+  translation 7 -3 0.3
+  rotation 0 0 1 1.2
+  name "caja_carton_2"
+}
+CardboardBox {
+  translation 7 -3 0.88
+  rotation 0 0 1 1.2
+  name "caja_carton_2(1)"
+}
+CardboardBox {
+  translation 10 0 0.3
+  name "caja_carton_3"
+}
+CardboardBox {
+  translation 5 2 0.98
+  rotation 0 0 1 0.5
+  name "caja_carton_1(1)"
+}
+CardboardBox {
+  translation 14.3661 4.34722 0.3
+  rotation 0 0 1 0.8
+  name "caja_carton_4"
+}
+CardboardBox {
+  translation 14.3242 4.30416 0.95
+  rotation 0 0 1 0.8
+  name "caja_carton_4(1)"
+}
+CardboardBox {
+  translation 10 0 0.86
+  name "caja_carton_3(1)"
+}
+CardboardBox {
+  translation 20 -4 0.3
+  name "caja_carton_5"
+}
+CardboardBox {
+  translation 20 -4 0.93
+  name "caja_carton_5(1)"
+}
+WoodenBox {
+  translation 12.57 1.95 0.3
+  name "caja_madera_1"
+}
+WoodenBox {
+  translation 18 3 0.3
+  name "caja_madera_3"
+}
+WoodenBox {
+  translation 18 3 0.9
+  name "caja_madera_3(1)"
+}
+WoodenPallet {
+  translation 9 3 0.385
+  rotation 0.5773509358554485 0.5773489358556708 0.5773509358554485 2.0944
+  name "pallet_1"
+}
+WoodenPallet {
+  translation 9 3 1.235
+  rotation 0.5773509358554485 0.5773489358556708 0.5773509358554485 2.0944
+  name "pallet_1(1)"
+}
+WoodenPallet {
+  translation 12.57 -2 0.585
+  rotation -0.5773509358554485 0.5773489358556708 -0.5773509358554485 -2.094395307179586
+  name "pallet_2"
+}
+WoodenPallet {
+  translation 22 -1.72 0.424997
+  rotation -0.5773509358554485 0.5773489358556708 0.5773509358554485 -2.094395307179586
+  name "pallet_3"
+}
+GasCanister {
+  translation 17.62 -1.5 -0.007357500000000017
+  rotation -0.8713393066286291 -0.49058659313590053 -0.009623271753947145 6.9279963382009265e-18
+  name "tanque_1"
+}
+GasCanister {
+  translation 6 -1.22 -0.0073575
+  rotation -0.7669353595184687 0.64145759986823 -0.01850140242162961 4.750693872006877e-18
+  name "tanque_2"
+}
+GasCanister {
+  translation 16 -3 -0.007357499999999906
+  rotation -0.8436479386960943 0.5343005972942002 -0.052735446000690495 1.0419031956440755e-17
+  name "tanque_4"
+}
+StreetLight {
+  translation 5 6 0
+  rotation 0 0 1 -1.5708
+  name "poste_1"
+}
+StreetLight {
+  translation 10 6 0
+  rotation 0 0 1 -1.5708
+  name "poste_2"
+}
+StreetLight {
+  translation 15 6 0
+  rotation 0 0 1 -1.5708
+  name "poste_3"
+}
+StreetLight {
+  translation 20 6 0
+  rotation 0 0 1 -1.5708
+  name "poste_4"
+}
+StreetLight {
+  translation 5 -6 0
+  rotation 0 0 1 1.5708
+  name "poste_5"
+}
+StreetLight {
+  translation 10 -6 0
+  rotation 0 0 1 1.5708
+  name "poste_6"
+}
+StreetLight {
+  translation 15.09 -6 0
+  rotation 0 0 1 1.5708
+  name "poste_6(1)"
+}
+StreetLight {
+  translation 20.14 -5.99999 0
+  rotation 0 0 1 1.5708
+  name "poste_6(2)"
+}
+Rock {
+  translation 11 -4 0
+  name "roca_1"
+}
+Rock {
+  translation 17 3 0
+  name "roca_2"
+}
+Rock {
+  translation 23 -3 0
+  name "roca_3"
+}
+TeslaModel3Simple {
+  translation -41.5139 4.34169 0.31
+  rotation 0 0 1 -0.2618053071795865
+  name "tesla_original"
+}
+TeslaModel3Simple {
+  translation 33.41 0.54 0.31
+  rotation 0 0 1 -1.5707953071795862
+  name "tesla_2"
+}
+TeslaModel3Simple {
+  translation 27.7389 -5.81734 0.31
+  rotation 0 0 1 1.59439
+  name "tesla_3"
+}
+TeslaModel3Simple {
+  translation 25.5044 3.64775 0.31
+  rotation 0 0 1 -0.48539530717958623
+  name "tesla_4"
+}
+Pine {
+  translation -14.0083 -14.4828 0
+  rotation 0 0 1 2.61799
+}
+Pine {
+  translation -19.6195 -24.3783 0
+  rotation 0 0 1 2.87979
+  name "pine tree(1)"
+}
+Pine {
+  translation -22.0129 6.20205 0
+  name "pine tree(3)"
+}
+Pine {
+  translation -10.6926 -25.1339 0
+  name "pine tree(4)"
+}
+Pine {
+  translation -14.3441 14.5621 0
+  name "pine tree(5)"
+}
+Pine {
+  translation -26.6328 -7.1707 0
+  name "pine tree(6)"
+}
+Pine {
+  translation -9.37029 14.0209 0
+  rotation 0 0 1 -2.6179953071795863
+  name "pine tree(2)"
+}
+Pine {
+  translation 22 8 0
+  name "pine_vuelo_1"
+}
+Pine {
+  translation 25 -8 0
+  name "pine_vuelo_2"
+}
+Pine {
+  translation 30 5 0
+  name "pine_vuelo_3"
+}
+Forest {
+  translation 0 0 -0.01
+  shape [
+    200 200
+    200 0
+    50 0
+    50 50
+    -50 50
+    -50 -50
+    50 -50
+    50 0
+    200 0
+    200 -200
+    -200 -200
+    -200 200
+  ]
+  density 0.01
+  type "cherry tree"
+  randomSeed 1
+  maxHeight 12
+  minHeight 6
+  maxRadius 6
+  minRadius 3
+}
+Mavic2Pro {
+  translation -3 0 0.1
+  rotation 0 0 1 0
+  controller "mavic2pro_patrol"
+  cameraSlot [
+    Camera {
+      width 640
+      height 480
+      near 0.2
+    }
+    Lidar {
+      translation 0.1 0 0
+      name "lidar_frontal"
+      horizontalResolution 360
+      fieldOfView 1.5708
+      numberOfLayers 1
+      near 0.1
+      minRange 0.1
+      maxRange 10
+      defaultFrequency 25
+    }
+  ]
+}
