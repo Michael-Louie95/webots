@@ -1,0 +1,256 @@
+═══════════════════════════════════════════════════════════════════════════════
+ GUIA RAPIDA: ENTRENAR YOLOV8S CON TU DATASET
+ Universidad Autonoma de Queretaro - Maestria en IA
+═══════════════════════════════════════════════════════════════════════════════
+
+TU DATASET ESTA EN:
+  D:\proyectro_webots\dataset_yolo\
+  ├── images/train/   (80% de imágenes)
+  ├── images/valid/   (20% de imágenes)
+  ├── labels/train/   (anotaciones .txt)
+  ├── labels/valid/
+  └── data.yaml       (configuración)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ PASO 1: INSTALAR DEPENDENCIAS
+═══════════════════════════════════════════════════════════════════════════════
+
+Abre PowerShell como ADMINISTRADOR y ejecuta:
+
+    pip install ultralytics
+    pip install opencv-python
+    pip install pyyaml
+    pip install matplotlib
+    pip install pillow
+
+Espera a que termine (~2-3 minutos).
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ PASO 2: VALIDAR DATASET (IMPORTANTE)
+═══════════════════════════════════════════════════════════════════════════════
+
+Antes de entrenar, valida que TODO esté correcto:
+
+    cd D:\proyectro_webots
+    python validar_dataset.py
+
+Deberías ver:
+    ✓ ESTRUCTURA OK
+    ✓ YAML OK
+    ✓ IMAGENES Y ANOTACIONES OK
+    ✓ DATASET LISTO PARA ENTRENAR
+
+Si hay ❌ ERRORES, revisa antes de continuar.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ PASO 3: ENTRENAR MODELO (ESTO ES LO IMPORTANTE)
+═══════════════════════════════════════════════════════════════════════════════
+
+Ejecuta:
+
+    python train_yolo.py
+
+QUE ESPERAR:
+  - Se descargan ~22MB del modelo base YOLOv8s (primera vez)
+  - Comienza el entrenamiento (100 epochs = 5-15 minutos dependiendo de GPU)
+  - Muestra progreso en cada epoch
+  - Guarda checkpoints automáticamente
+  - Al final, el mejor modelo se guarda en: runs/detect/train_dataset/weights/best.pt
+
+ESTRUCTURA DE SALIDA:
+    runs/detect/train_dataset/
+    ├── weights/
+    │   ├── best.pt        ← ESTE ES TU MODELO FINAL
+    │   └── last.pt
+    ├── results.csv        (métricas por epoch)
+    ├── confusion_matrix.png
+    └── ...
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ PASO 4: EVALUAR MODELO EN DATASET DE VALIDACION
+═══════════════════════════════════════════════════════════════════════════════
+
+Después de entrenar:
+
+    python evaluar_modelo.py
+
+VER:
+  - mAP@0.5: es tu métrica principal (meta: >85%)
+  - Precisión: cuántos falsos positivos
+  - Recall: cuántos objetos detecta
+  - Confusion Matrix: qué clases confunde
+
+INTERPRETAR:
+  - mAP@0.5 > 0.85  →  ✅ EXCELENTE (supera meta de tesis)
+  - mAP@0.5 > 0.70  →  ✓ BUENO
+  - mAP@0.5 < 0.60  →  ⚠️ NECESITA MEJORA
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ PASO 5: DETECTAR EN IMAGENES / VIDEOS / CAMARA
+═══════════════════════════════════════════════════════════════════════════════
+
+A. IMAGEN:
+    python inferencia.py --imagen foto.jpg
+    
+    Output: foto_detecciones.jpg (con boxes dibujados)
+
+B. VIDEO:
+    python inferencia.py --video video.mp4
+    
+    Output: video procesado en runs/detect/video_detecciones/
+
+C. CAMARA EN TIEMPO REAL:
+    python inferencia.py --camara 0
+    
+    Presiona Q para salir
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ HIPERPARAMETROS (SI NECESITAS AJUSTAR)
+═══════════════════════════════════════════════════════════════════════════════
+
+Abre train_yolo.py y ajusta estas variables:
+
+EPOCHS = 100           # Aumenta si underfitting, baja si overfitting
+BATCH = 16             # Baja si tienes RAM limitada (8, 12)
+IMGSZ = 640           # Tamaño de entrada (640x640 es estándar)
+PATIENCE = 20         # Early stopping si no mejora en N epochs
+
+Para MEJOR PRECISION (si mAP<0.85):
+  1. Aumenta EPOCHS a 150
+  2. Baja BATCH a 8 (entrena más lento pero más preciso)
+  3. Agrega más datos (más imágenes de Webots)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ SI ALGO FALLA
+═══════════════════════════════════════════════════════════════════════════════
+
+ERROR: "CUDA not available"
+  → No tienes GPU NVIDIA. Entrena en CPU (más lento)
+  → Cambia: DEVICE = 'cpu' en train_yolo.py
+
+ERROR: "No module named 'ultralytics'"
+  → pip install ultralytics (verifica que esté instalado)
+
+ERROR: "data.yaml not found"
+  → Verifica que exists: D:\proyectro_webots\dataset_yolo\data.yaml
+
+ERROR: "Out of memory"
+  → Baja BATCH (16 → 8 → 4)
+  → Baja IMGSZ (640 → 416)
+
+ERROR: "No detections"
+  → Dataset puede tener problemas
+  → Ejecuta: python validar_dataset.py
+  → Verifica que cada imagen tiene un .txt con anotaciones
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ RESUMEN RAPIDO (COMANDOS)
+═══════════════════════════════════════════════════════════════════════════════
+
+# Instalación
+pip install ultralytics opencv-python pyyaml matplotlib pillow
+
+# Validar
+python validar_dataset.py
+
+# Entrenar (⭐ EL PRINCIPAL)
+python train_yolo.py
+
+# Evaluar
+python evaluar_modelo.py
+
+# Detectar
+python inferencia.py --imagen foto.jpg
+python inferencia.py --video video.mp4
+python inferencia.py --camara 0
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ METAS DE TESIS
+═══════════════════════════════════════════════════════════════════════════════
+
+Tu tesis requiere:
+  ✓ Detección mAP@0.5 > 85%
+  ✓ Evasión ≥ 80% tasa de éxito
+  ✓ Distancia mínima > 0.6m al obstáculo
+
+Después de entrenar:
+  1. Verifica mAP@0.5 en evaluar_modelo.py
+  2. Usa el modelo en tu módulo de evasión de obstáculos
+  3. Prueba en Webots con el dron haciendo evasión
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ TIPS IMPORTANTES
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Los datos sintéticos de Webots son PERFECTOS
+   - Sin ruido
+   - Sin oclusiones reales
+   - Etiquetado automático perfecto
+   
+✅ La augmentation es CRÍTICA
+   - Ya está activada en train_yolo.py
+   - Simula variaciones del mundo real
+
+✅ Monitorea el entrenamiento
+   - Ve a: runs/detect/train_dataset/
+   - Abre results.csv para ver gráficas
+   - Busca overfitting (val loss > train loss)
+
+⚠️ Si mAP < 0.75:
+   1. Agrega más datos (toma más fotos con el dron)
+   2. Aumenta epochs a 150
+   3. Usa YOLOv8m en lugar de v8s
+
+⚠️ Si mAP > 0.90 pero overfitting:
+   1. Baja epochs
+   2. Reduce patience
+   3. Aumenta augmentation
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ ARCHIVO: MEJOR MODELO ENTRENADO
+═══════════════════════════════════════════════════════════════════════════════
+
+Después de entrenar, tu modelo final está en:
+
+    runs/detect/train_dataset/weights/best.pt
+
+Puedes:
+  1. Usarlo directamente en inferencia.py
+  2. Copiarlo a otra carpeta para respaldo
+  3. Comprimirlo para GitHub/backup
+  4. Convertirlo a otros formatos (ONNX, TensorRT)
+
+Para usar en tu código de evasión:
+
+    from ultralytics import YOLO
+    
+    model = YOLO('runs/detect/train_dataset/weights/best.pt')
+    results = model.predict(imagen)
+    
+    for detection in results[0].boxes:
+        print(detection.cls, detection.conf, detection.xyxy)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ ¡A ENTRENAR!
+═══════════════════════════════════════════════════════════════════════════════
+
+1. pip install ultralytics opencv-python pyyaml matplotlib pillow
+2. python validar_dataset.py
+3. python train_yolo.py          ← ESPERA A QUE TERMINE
+4. python evaluar_modelo.py      ← VE TUS METRICAS
+5. python inferencia.py --imagen test.jpg  ← PRUEBA
+
+¡Buena suerte! 🚀
+═══════════════════════════════════════════════════════════════════════════════
