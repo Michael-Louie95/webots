@@ -1,0 +1,63 @@
+D:\proyectro_webots\entrenaryolo>python evaluar_modelo.py
+======================================================================
+EVALUACION DEL MODELO ENTRENADO
+======================================================================
+
+Modelo: D:\proyectro_webots\runs\detect\train_dataset\weights\best.pt
+Dataset: D:\proyectro_webots\dataset_yolo\data.yaml
+
+----------------------------------------------------------------------
+Cargando modelo...
+----------------------------------------------------------------------
+
+
+----------------------------------------------------------------------
+Validando en dataset de validación...
+----------------------------------------------------------------------
+
+Ultralytics 8.4.90  Python-3.12.10 torch-2.12.1+cpu CPU (13th Gen Intel Core i5-13420H)
+Model summary (fused): 73 layers, 11,131,776 parameters, 0 gradients, 28.5 GFLOPs
+val: Fast image access  (ping: 0.00.0 ms, read: 2348.6592.4 MB/s, size: 442.3 KB)
+val: Scanning D:\proyectro_webots\dataset_yolo\labels\test.cache... 181 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 181/181  0.0s
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 1/12 5.7s/it 1                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 16% ━━────────── 2/12 3.2s/it                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 3/12 2.5s/it                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 33% ━━━━──────── 4/12 2.1s/it                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 41% ━━━━━─────── 5/12 1.9s/it                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 6/12 1.8s/it                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 58% ━━━━━━━───── 7/12 1.7s/it                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 66% ━━━━━━━━──── 8/12 1.7s/it                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 9/12 1.6s/it                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 83% ━━━━━━━━━━── 10/12 1.6s/it                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━━─ 11/12 1.6s/it                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 12/12 1.5s/it 18.0s
+                   all        181        181      0.965      0.976      0.987      0.805
+                  caja         26         26      0.991          1      0.995      0.848
+                maseta         13         13      0.895      0.923      0.899      0.661
+               persona         10         10      0.963          1      0.995      0.935
+                tanque          7          7      0.948          1      0.995      0.854
+                  auto         12         12      0.968          1      0.995      0.937
+                  cono         11         11          1          1      0.995      0.761
+                pallet         12         12      0.971          1      0.995      0.799
+                 banca          6          6      0.938          1      0.995      0.832
+              basurero          3          3      0.937          1      0.995      0.896
+                  moto         11         11      0.967          1      0.995      0.734
+                  pine         10         10          1      0.826      0.995      0.737
+               barrera         15         15      0.975          1      0.995      0.688
+              stopsign         19         19       0.97          1      0.995      0.787
+                   cat          9          9      0.957          1      0.995      0.916
+                   dog          8          8      0.996      0.875      0.971      0.545
+                farola          9          9      0.956          1      0.995      0.952
+Speed: 0.4ms preprocess, 91.3ms inference, 0.0ms loss, 0.2ms postprocess per image
+Results saved to D:\proyectro_webots\entrenaryolo\runs\detect\val-5
+
+======================================================================
+METRICAS DE VALIDACION
+======================================================================
+
+RESULTADOS:
+----------------------------------------------------------------------
+mAP@0.5 (detectar objetos): 0.9875
+  ✅ EXCELENTE - Supera meta de tesis (>85%)
+mAP@0.5:0.95 (más estricto): 0.8051
+
+Precisión (falsos positivos): 0.9646
+Recall (detecciones perdidas): 0.9765
+
+----------------------------------------------------------------------
+TODAS LAS METRICAS:
+----------------------------------------------------------------------
+  fitness: 0.8051
+  metrics/mAP50(B): 0.9875
+  metrics/mAP50-95(B): 0.8051
+  metrics/precision(B): 0.9646
+  metrics/recall(B): 0.9765

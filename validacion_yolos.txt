@@ -1,0 +1,61 @@
+(venv) C:\Users\MGUERRA3\Documents\Michael_Docs\proyectro_webots\entrenaryolo>python evaluar_modelo.py
+======================================================================
+EVALUACION DEL MODELO ENTRENADO
+======================================================================
+
+Modelo: runs/detect/train_dataset/weights/best.pt
+Dataset: C:\Users\MGUERRA3\Documents\Michael_Docs\proyectro_webots\dataset_yolo\data.yaml
+
+----------------------------------------------------------------------
+Cargando modelo...
+----------------------------------------------------------------------
+
+
+----------------------------------------------------------------------
+Validando en dataset de validación...
+----------------------------------------------------------------------
+
+Ultralytics 8.4.97  Python-3.12.8 torch-2.5.1+cu121 CUDA:0 (NVIDIA RTX A2000 8GB Laptop GPU, 8192MiB)
+Model summary (fused): 73 layers, 11,131,776 parameters, 0 gradients, 28.5 GFLOPs
+←[34m←[1mval: ←[0mFast image access  (ping: 0.10.0 ms, read: 58.323.7 MB/s, size: 432.5 KB)
+←[K←[34m←[1mval: ←[0mScanning C:\Users\MGUERRA3\Documents\Michael_Docs\proyectro_webots\dataset_yolo\labels\valid.cache... 357 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 357/357  0.0s
+←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 1/23 2.6s/i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 2/23 1.6it/←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 13% ━╸────────── 3/23 2.6it←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 4/23 3.7it←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 5/23 4.2it←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 26% ━━━───────── 6/23 5.0it←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 30% ━━━╸──────── 7/23 5.3it←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 8/23 5.6it←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 39% ━━━━╸─────── 9/23 5.9it←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 10/23 6.1i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 47% ━━━━━╸────── 11/23 6.3i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 52% ━━━━━━────── 12/23 6.4i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 13/23 6.6i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 60% ━━━━━━━───── 14/23 6.6i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 15/23 6.6i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 69% ━━━━━━━━──── 16/23 6.5i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 73% ━━━━━━━━╸─── 17/23 6.7i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 18/23 6.6i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 19/23 6.8i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 86% ━━━━━━━━━━── 20/23 6.7i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 21/23 6.7i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 22/23 6.7i←[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 23/23 5.5it/s 4.2s
+                   all        357        357      0.954      0.988      0.989      0.821
+                  caja         39         39      0.985          1      0.995       0.92
+                maseta         12         12      0.921      0.973      0.976      0.818
+               persona         13         13      0.957          1      0.995      0.873
+                tanque         14         14       0.96          1      0.995      0.825
+                  auto         32         32      0.982          1      0.995      0.924
+                  cono         11         11       0.95          1      0.995      0.782
+                pallet         41         41      0.986          1      0.995      0.829
+                 banca         12         12      0.953          1      0.995      0.883
+              basurero         15         15      0.987          1      0.995      0.823
+                  moto         27         27      0.979          1      0.995      0.764
+                  pine         24         24      0.915      0.898      0.969      0.657
+               barrera         31         31      0.981          1      0.995      0.809
+              stopsign         27         27      0.864      0.942      0.952      0.779
+                   cat         13         13      0.957          1      0.995      0.844
+                   dog         14         14       0.91          1      0.995      0.741
+                farola         32         32      0.982          1      0.995      0.865
+Speed: 0.8ms preprocess, 7.5ms inference, 0.0ms loss, 0.7ms postprocess per image
+Results saved to ←[1mC:\Users\MGUERRA3\Documents\Michael_Docs\proyectro_webots\entrenaryolo\runs\detect\val←[0m
+
+======================================================================
+METRICAS DE VALIDACION
+======================================================================
+
+RESULTADOS:
+----------------------------------------------------------------------
+
+----------------------------------------------------------------------
+TODAS LAS METRICAS:
+----------------------------------------------------------------------
+  fitness: 0.8211
+  metrics/mAP50(B): 0.9895
+  metrics/mAP50-95(B): 0.8211
+  metrics/precision(B): 0.9544
+  metrics/recall(B): 0.9883
+
+======================================================================
+ANALISIS:
+======================================================================
