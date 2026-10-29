@@ -1,0 +1,405 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/StraightRoadSegment.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/RoadIntersection.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/RoadLine.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/traffic/protos/PedestrianCrossing.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/CommercialBuilding.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/ResidentialBuilding.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/Hotel.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/CyberboticsTower.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/FastFoodRestaurant.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/CardboardBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/FlowerPot.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/humans/pedestrian/protos/Pedestrian.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/gas_canister/protos/GasCanister.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/TeslaModel3Simple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/traffic/protos/TrafficCone.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/pallet/protos/WoodenPallet.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/street_furniture/protos/Bench.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/generic/MotorbikeSimple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Pine.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Oak.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Cypress.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/traffic/protos/WorkBarrier.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/traffic/protos/StopSign.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/animals/protos/Cat.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/animals/protos/Dog.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/traffic/protos/StreetLight.proto"
+
+WorldInfo {
+  info [
+    "Sección urbana de City para vuelo autónomo de dron con evasión."
+    "Universidad Autónoma de Querétaro - Maestría en IA"
+  ]
+  title "City Dron - Detección y Evasión de Obstáculos"
+  ERP 0.6
+  basicTimeStep 8
+  defaultDamping Damping {
+    linear 0.5
+    angular 0.5
+  }
+  lineScale 1
+}
+Viewpoint {
+  orientation 0.3046177766250563 -0.5038242598220442 -0.8083125171483964 4.998746721302186
+  position -58.45201447975114 -61.54847056377711 75.1894355919215
+  near 0.2
+  followType "None"
+}
+TexturedBackground {
+  luminosity 3
+}
+TexturedBackgroundLight {
+}
+Floor {
+  name "suelo_ciudad"
+  size 200 200
+  tileSize 4 4
+  appearance PBRAppearance {
+    baseColor 0.35 0.35 0.35
+    roughness 1
+    metalness 0
+  }
+}
+RoadIntersection {
+  translation 0 0 0.02
+  id "int_centro"
+  roadsWidth 21.5
+  startRoadsLength [
+    10.75
+  ]
+  startRoadsNumberOfLanes 4
+}
+StraightRoadSegment {
+  translation 10.75 0 0.02
+  name "calle_este"
+  id "r_este"
+  width 21.5
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine {
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+    }
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  length 40
+}
+StraightRoadSegment {
+  translation -10.75 0 0.02
+  rotation 0 0 1 3.14159
+  name "calle_oeste"
+  id "r_oeste"
+  width 21.5
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine {
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+    }
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  length 40
+}
+StraightRoadSegment {
+  translation 0 10.75 0.02
+  rotation 0 0 1 1.5708
+  name "calle_norte"
+  id "r_norte"
+  width 21.5
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine {
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+    }
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  length 40
+}
+StraightRoadSegment {
+  translation 0 -10.75 0.02
+  rotation 0 0 1 -1.5708
+  name "calle_sur"
+  id "r_sur"
+  width 21.5
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine {
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+    }
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  length 40
+}
+PedestrianCrossing {
+  translation 25 5 0.02
+  name "paso_peatonal_este"
+}
+CommercialBuilding {
+  translation 60 40 0
+  name "edificio_comercial_1"
+}
+ResidentialBuilding {
+  translation -55 40 0
+  name "edificio_residencial_1"
+}
+Hotel {
+  translation -55 -50 0
+  name "hotel_1"
+}
+CyberboticsTower {
+  translation 55 -50 0
+  name "torre_1"
+}
+FastFoodRestaurant {
+  translation 40 -25 0.004
+  rotation 0 0 -1 1.8325926
+  name "restaurante_1"
+  height 4.3
+  length 11
+  width 11
+  brand "subway"
+  numberOfSides 2
+}
+Oak {
+  translation 35 30 0
+  name "arbol_oak_1"
+}
+Cypress {
+  translation -30 30 0
+  name "arbol_cypress_1"
+}
+Oak {
+  translation -30 -30 0
+  name "arbol_oak_2"
+}
+Mavic2Pro {
+  translation -30 5 0.1
+  rotation 0 0 1 0
+  controller "mavic2pro_patrol"
+  cameraSlot [
+    Camera {
+      width 640
+      height 480
+      near 0.2
+    }
+    Lidar {
+      translation 0.3 0 0.15
+      rotation 0 0 1 0
+      name "lidar_frontal"
+      horizontalResolution 360
+      fieldOfView 6.28318
+      numberOfLayers 1
+      near 0.1
+      minRange 0.2
+      maxRange 10
+      defaultFrequency 25
+    }
+  ]
+}
+Pedestrian {
+  translation -23.9771 5.34221 1.27
+  rotation 0 0 1 3.14159
+  name "obs_persona_1"
+  controller ""
+  shirtColor 0.85 0.15 0.15
+}
+Pedestrian {
+  translation -22.9771 2.80221 1.37
+  rotation 0 0 1 3.14159
+  name "obs_persona_1(1)"
+  controller ""
+  shirtColor 0.85 0.15 0.15
+}
+CardboardBox {
+  translation -21 6.25 0.3
+  name "obs_caja_1"
+}
+CardboardBox {
+  translation -21 6 0.91
+  name "obs_caja_1(1)"
+}
+GasCanister {
+  translation -17 5 -0.007357499999999795
+  rotation -0.776887528023428 -0.30071498439061156 -0.5531873705758308 1.1287169476960855e-17
+  name "obs_tanque_1"
+}
+GasCanister {
+  translation -17 4.42 -0.007357499999999795
+  rotation -0.4310018484431508 0.08521283996549826 -0.8983185284427799 1.588407981164616e-17
+  name "obs_tanque_1(3)"
+}
+GasCanister {
+  translation -16.999899999999982 -0.3239790000000001 -0.007357500000000017
+  rotation -1.7018701289245737e-12 -2.8720627462829774e-13 1 0.002003532027506103
+  name "obs_tanque_1(7)"
+}
+GasCanister {
+  translation -16.99909999999998 -0.7739779999999993 -0.007357500000000017
+  rotation -1.7018873814011275e-12 -2.8790278289923926e-13 1 0.002003532027506103
+  name "obs_tanque_1(4)"
+}
+GasCanister {
+  translation -16.998199999999983 -1.2839799999999972 -0.007357500000000017
+  rotation -1.697851637441722e-12 -2.8832296025563814e-13 1 0.002003532027506103
+  name "obs_tanque_1(8)"
+}
+GasCanister {
+  translation -17 3.8400041564620695 -0.007357499999999795
+  rotation -0.9999999990574392 -4.790232829968393e-06 -4.315292935637929e-05 4.0528879727361366e-13
+  name "obs_tanque_1(6)"
+}
+GasCanister {
+  translation -6.9 5.97 -0.007357499999999795
+  rotation -0.18246767929745736 0.012277413276990033 -0.9831351947392719 1.4454268276538184e-17
+  name "obs_tanque_1(1)"
+}
+GasCanister {
+  translation -6.9 6.49 -0.007357499999999795
+  rotation -0.18246767929745736 0.012277413276990033 -0.9831351947392719 1.4454268276538184e-17
+  name "obs_tanque_1(5)"
+}
+GasCanister {
+  translation -17 5.49 -0.007357499999999795
+  rotation -0.4310018484431508 0.08521283996549826 -0.8983185284427799 1.588407981164616e-17
+  name "obs_tanque_1(2)"
+}
+TrafficCone {
+  translation -13 5 0
+  name "obs_cono_1"
+}
+TrafficCone {
+  translation -13 5 0.49
+  name "obs_cono_1(1)"
+}
+TrafficCone {
+  translation -13 5 0.96
+  name "obs_cono_1(2)"
+}
+WoodenPallet {
+  translation -9 1.78 0.525
+  rotation 0 1 0 -1.5707953071795862
+  name "obs_pallet_1"
+}
+WoodenPallet {
+  translation -5.49 1.92 0.525
+  rotation 0 1 0 -1.5707953071795862
+  name "obs_pallet_1(2)"
+}
+WoodenPallet {
+  translation -9 0.92 0.525
+  rotation 0 1 0 -1.5707953071795862
+  name "obs_pallet_1(1)"
+}
+StreetLight {
+  translation 13 1.74 0
+  rotation 0 0 1 1.5708
+  name "obs_farola_1"
+}
+StreetLight {
+  translation 13 8.77 0
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "obs_farola_1(1)"
+}
+TeslaModel3Simple {
+  translation 17 8.79 0.29
+  rotation 0 0 1 -1.5708
+  name "obs_auto_1"
+}
+TeslaModel3Simple {
+  translation 17.14 1.63 0.52
+  rotation 0 0 1 -1.5708
+  name "obs_auto_1(1)"
+}
+MotorbikeSimple {
+  translation 21 5 0.5
+  rotation 0 0 1 -1.5708
+  name "obs_moto_1"
+}
+WorkBarrier {
+  translation 25 5 0
+  name "obs_barrera_1"
+}
+Pine {
+  translation -3 9.37 0
+  name "obs_pine_1"
+}
+Pine {
+  translation -3 -1.26 0
+  name "obs_pine_1(1)"
+}
+Pedestrian {
+  translation 4.99999 8.52 1.27
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "obs_persona_2"
+  controller ""
+  shirtColor 0.2 0.4 0.85
+  pantsColor 0.15 0.15 0.15
+}
+Pedestrian {
+  translation 6 1.95 1.4
+  rotation 0 0 1 -3.1415853071795863
+  name "obs_persona_2(1)"
+  controller ""
+  shirtColor 0.2 0.4 0.85
+  pantsColor 0.15 0.15 0.15
+}
+StopSign {
+  translation 1.00836e-06 5.47 0
+  rotation 0 0 1 3.14159
+  name "obs_stop_1"
+}
+StopSign {
+  translation 1.00836e-06 5.47 0
+  rotation 0 0 1 -0.2618053071795865
+  name "obs_stop_1(1)"
+}
+Bench {
+  translation 8 5.35 0
+  name "obs_banca_1"
+}
+FlowerPot {
+  translation -9.06 2.2 1.14
+  name "obs_maseta_1"
+}
+Cat {
+  translation -15.111 7.45828 1.24
+  rotation 0 0 1 -2.8797953071795863
+  name "obs_cat_1(1)"
+}
+Dog {
+  translation 8.02 5.44 1.18
+  rotation 0 0 1 3.14159
+  name "obs_dog_1"
+}
+CardboardBox {
+  translation -15 7.44 0.3
+  name "obs_caja_2"
+}
+CardboardBox {
+  translation -15 7.44 0.89
+  name "obs_caja_2(1)"
+}
